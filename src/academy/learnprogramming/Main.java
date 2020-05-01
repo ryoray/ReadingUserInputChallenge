@@ -9,25 +9,48 @@ public class Main {
         Scanner scanValue = new Scanner(System.in);
 
         int counter = 0;
-        int number;
-        boolean hasNextInt;
         int sum = 0;
 
-        while (counter < 10) {
-            counter++;
-            System.out.print("Enter number #" + counter + ": ");
+        int number;
+        boolean hasNextInt;
 
-            hasNextInt = scanValue.hasNextInt();
+//        while (counter < 10) {
+//            counter++;
+//            System.out.print("Enter number #" + counter + ": ");
+//
+//            hasNextInt = scanValue.hasNextInt();
+//
+//            if (hasNextInt) {
+//                number = scanValue.nextInt();
+//                sum += number;
+//            } else {
+//                System.out.println("Invalid number");
+//            }
+//            scanValue.nextLine();
+//        }
 
-            if (hasNextInt) {
+        // Another version of while --> using infinite loop
+        // and break when condition reached
+
+        while (true) {
+            int order = counter + 1;
+            System.out.print("Enter number #" + order + ": ");
+
+            boolean hasIntValue = scanValue.hasNextInt();
+
+            if (hasIntValue) {
                 number = scanValue.nextInt();
-                scanValue.nextLine();
+                counter++;
                 sum += number;
+                if (counter == 10){
+                    break;
+                }
             } else {
-                System.out.println("Invalid number");
-                scanValue.nextLine();
+                System.out.println("Invalid Value");
             }
+            scanValue.nextLine();
         }
+
         System.out.println("Total = " + sum);
         scanValue.close();
     }
